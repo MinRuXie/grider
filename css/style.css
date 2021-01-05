@@ -14,19 +14,21 @@ main .work-wrap .capture-wrap {
   grid-area: 1 span;
   width: 100vh;
   height: 100vh;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: repeat(4, 25%);
-  grid-template-rows: repeat(4, 25%);
   position: relative;
 }
-main .work-wrap .capture-wrap:hover {
+main .work-wrap .capture-wrap .grid-wrap {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: grid;
+}
+main .work-wrap .capture-wrap .grid-wrap:hover {
   border: 1px dashed rgba(0, 0, 0, 0.2);
 }
-main .work-wrap .capture-wrap:hover .image-wrap {
+main .work-wrap .capture-wrap .grid-wrap:hover .image-wrap {
   border: 1px dashed rgba(0, 0, 0, 0.2);
 }
-main .work-wrap .capture-wrap .image-wrap {
+main .work-wrap .capture-wrap .grid-wrap .image-wrap {
   grid-area: 1 span;
   display: flex;
   align-items: center;
@@ -34,14 +36,14 @@ main .work-wrap .capture-wrap .image-wrap {
   position: relative;
   overflow: hidden;
 }
-main .work-wrap .capture-wrap .image-wrap img {
+main .work-wrap .capture-wrap .grid-wrap .image-wrap img {
   width: 100%;
   height: 100%;
 }
-main .work-wrap .capture-wrap .image-wrap:hover .edit-btn {
+main .work-wrap .capture-wrap .grid-wrap .image-wrap:hover .edit-btn {
   display: block;
 }
-main .work-wrap .capture-wrap .image-wrap .edit-btn {
+main .work-wrap .capture-wrap .grid-wrap .image-wrap .edit-btn {
   position: absolute;
   z-index: 5;
   left: 10px;

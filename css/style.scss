@@ -9,59 +9,58 @@ html, body {
 }
 
 main {
-    // display: grid;
-    // grid-template-columns: 100vh calc(100vw - 200vh) 100vh;
-
     .work-wrap {
-        // grid-area: 1 span;
         display: inline-block;
 
         .capture-wrap {
             grid-area: 1 span;
             width: 100vh;
             height: 100vh;
-            // border: 1px dashed rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: repeat(4, 25%);
-            grid-template-rows: repeat(4, 25%);
             position: relative;
 
-            &:hover {
-                border: 1px dashed rgba(0, 0, 0, 0.2);
-
-                .image-wrap {
-                    border: 1px dashed rgba(0, 0, 0, 0.2);
-                }
-            }
-    
-            .image-wrap {
-                grid-area: 1 span;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                // border: 1px dashed rgba(0, 0, 0, 0.2);
-                position: relative;
+            .grid-wrap {
+                width: 100%;
+                height: 100%;
                 overflow: hidden;
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                    // object-fit: contain;
-                }
+                display: grid;
+                // grid-template-columns: repeat(4, 25%);
+                // grid-template-rows: repeat(4, 25%);
 
                 &:hover {
-                    .edit-btn {
-                        display: block;
+                    border: 1px dashed rgba(0, 0, 0, 0.2);
+    
+                    .image-wrap {
+                        border: 1px dashed rgba(0, 0, 0, 0.2);
                     }
                 }
-
-                .edit-btn {
-                    position: absolute;
-                    z-index: 5;
-                    left: 10px;
-                    top: 15px;
-                    display: none;
+        
+                .image-wrap {
+                    grid-area: 1 span;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                    overflow: hidden;
+    
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        // object-fit: contain;
+                    }
+    
+                    &:hover {
+                        .edit-btn {
+                            display: block;
+                        }
+                    }
+    
+                    .edit-btn {
+                        position: absolute;
+                        z-index: 5;
+                        left: 10px;
+                        top: 15px;
+                        display: none;
+                    }
                 }
             }
 
@@ -78,12 +77,10 @@ main {
     }
 
     .toolbox-wrap {
-        // grid-area: 1 span;
         display: inline-block;
     }
 
     .output-wrap {
-        // grid-area: 1 span;
         width: 100vw;
         height: 100vh;
         position: fixed;
