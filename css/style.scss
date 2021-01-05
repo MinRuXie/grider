@@ -9,8 +9,10 @@ html, body {
 }
 
 main {
+    display: flex;
+    justify-content: center;
+
     .work-wrap {
-        display: inline-block;
 
         .capture-wrap {
             grid-area: 1 span;
@@ -77,30 +79,30 @@ main {
     }
 
     .toolbox-wrap {
-        display: inline-block;
+        padding: 30px;
+    }
+}
+
+.output-wrap {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    background-color: wheat;
+    display: none;
+
+    &.show {
+        display: block;
     }
 
-    .output-wrap {
-        width: 100vw;
-        height: 100vh;
-        position: fixed;
-        z-index: 100;
-        top: 0;
-        left: 0;
-        background-color: wheat;
-        display: none;
-
-        &.show {
-            display: block;
-        }
-
-        .colsed-btn {
-            width: 60px;
-            height: 60px;
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            cursor: pointer;
-        }
+    .colsed-btn {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        cursor: pointer;
     }
 }

@@ -7,8 +7,9 @@ html, body {
   margin: 0;
 }
 
-main .work-wrap {
-  display: inline-block;
+main {
+  display: flex;
+  justify-content: center;
 }
 main .work-wrap .capture-wrap {
   grid-area: 1 span;
@@ -60,9 +61,10 @@ main .work-wrap .capture-wrap .year-wrap {
   font-family: "Vast Shadow", cursive;
 }
 main .toolbox-wrap {
-  display: inline-block;
+  padding: 30px;
 }
-main .output-wrap {
+
+.output-wrap {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -72,10 +74,10 @@ main .output-wrap {
   background-color: wheat;
   display: none;
 }
-main .output-wrap.show {
+.output-wrap.show {
   display: block;
 }
-main .output-wrap .colsed-btn {
+.output-wrap .colsed-btn {
   width: 60px;
   height: 60px;
   position: absolute;
