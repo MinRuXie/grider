@@ -1,0 +1,109 @@
+* {
+    box-sizing: border-box;
+    
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    // display: grid;
+    // grid-template-columns: 100vh calc(100vw - 200vh) 100vh;
+
+    .work-wrap {
+        // grid-area: 1 span;
+        display: inline-block;
+
+        .capture-wrap {
+            grid-area: 1 span;
+            width: 100vh;
+            height: 100vh;
+            // border: 1px dashed rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: repeat(4, 25%);
+            grid-template-rows: repeat(4, 25%);
+            position: relative;
+
+            &:hover {
+                border: 1px dashed rgba(0, 0, 0, 0.2);
+
+                .image-wrap {
+                    border: 1px dashed rgba(0, 0, 0, 0.2);
+                }
+            }
+    
+            .image-wrap {
+                grid-area: 1 span;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                // border: 1px dashed rgba(0, 0, 0, 0.2);
+                position: relative;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    // object-fit: contain;
+                }
+
+                &:hover {
+                    .edit-btn {
+                        display: block;
+                    }
+                }
+
+                .edit-btn {
+                    position: absolute;
+                    z-index: 5;
+                    left: 10px;
+                    top: 15px;
+                    display: none;
+                }
+            }
+
+            .year-wrap {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                z-index: 10;
+                transform: translate(-50%, -50%);
+                font-size: 35px;
+                font-family: 'Vast Shadow', cursive;
+            }
+        }
+    }
+
+    .toolbox-wrap {
+        // grid-area: 1 span;
+        display: inline-block;
+    }
+
+    .output-wrap {
+        // grid-area: 1 span;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: 100;
+        top: 0;
+        left: 0;
+        background-color: wheat;
+        display: none;
+
+        &.show {
+            display: block;
+        }
+
+        .colsed-btn {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            cursor: pointer;
+        }
+    }
+}
