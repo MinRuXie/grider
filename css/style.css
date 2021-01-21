@@ -1,5 +1,13 @@
+@charset "UTF-8";
 * {
+  /* 不能反白 */
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -o-user-select: none;
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
 }
 
 html, body {
@@ -16,6 +24,7 @@ main .work-wrap .capture-wrap {
   width: 100vh;
   height: 100vh;
   position: relative;
+  /* layout + btn */
 }
 main .work-wrap .capture-wrap .grid-wrap {
   width: 100%;
@@ -40,6 +49,12 @@ main .work-wrap .capture-wrap .grid-wrap .image-wrap {
 main .work-wrap .capture-wrap .grid-wrap .image-wrap img {
   width: 100%;
   height: 100%;
+}
+main .work-wrap .capture-wrap .grid-wrap .image-wrap img[src="#"] {
+  display: none;
+}
+main .work-wrap .capture-wrap .grid-wrap .image-wrap:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 main .work-wrap .capture-wrap .grid-wrap .image-wrap:hover .edit-btn {
   display: block;
@@ -71,7 +86,7 @@ main .toolbox-wrap {
   z-index: 100;
   top: 0;
   left: 0;
-  background-color: wheat;
+  background-color: rgba(0, 0, 0, 0.8);
   display: none;
 }
 .output-wrap.show {
@@ -84,6 +99,7 @@ main .toolbox-wrap {
   right: 20px;
   top: 20px;
   cursor: pointer;
+  color: #FFF;
 }
 
 /*# sourceMappingURL=style.css.map */

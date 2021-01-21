@@ -1,6 +1,13 @@
 * {
+    /* 不能反白 */
+    -moz-user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;
+    -o-user-select: none;
+
     box-sizing: border-box;
-    
+    -webkit-font-smoothing: antialiased;
 }
 
 html, body {
@@ -20,6 +27,7 @@ main {
             height: 100vh;
             position: relative;
 
+            /* layout + btn */
             .grid-wrap {
                 width: 100%;
                 height: 100%;
@@ -27,6 +35,7 @@ main {
                 display: grid;
                 // grid-template-columns: repeat(4, 25%);
                 // grid-template-rows: repeat(4, 25%);
+                // border: 1px dashed rgba(0, 0, 0, 0.2);
 
                 &:hover {
                     border: 1px dashed rgba(0, 0, 0, 0.2);
@@ -43,14 +52,21 @@ main {
                     justify-content: center;
                     position: relative;
                     overflow: hidden;
+                    // border: 1px dashed rgba(0, 0, 0, 0.2);
     
                     img {
                         width: 100%;
                         height: 100%;
                         // object-fit: contain;
+
+                        &[src="#"] {
+                            display: none;
+                        }
                     }
     
                     &:hover {
+                        background-color: rgba(0, 0, 0, 0.1);
+
                         .edit-btn {
                             display: block;
                         }
@@ -90,7 +106,7 @@ main {
     z-index: 100;
     top: 0;
     left: 0;
-    background-color: wheat;
+    background-color: rgba(0, 0, 0, 0.8);
     display: none;
 
     &.show {
@@ -104,5 +120,6 @@ main {
         right: 20px;
         top: 20px;
         cursor: pointer;
+        color: #FFF;
     }
 }

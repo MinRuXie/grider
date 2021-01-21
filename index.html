@@ -22,14 +22,16 @@
         </section>
 
         <section class="toolbox-wrap">
-            <h4>版面</h4>
-            <input min="1" max="5" type="number">
-
             <h4>年份樣式</h4>
-            <input type="color">
+            
+            <label for="year-color">顏色</label>
+            <input id="js-year-color" name="year-color" type="color">
+
+            <label for="year-font-size">字體大小</label>
+            <input id="js-year-font-size" name="year-font-size" min="12" max="100" type="number">px
 
             <h4>輸出</h4>
-            <button id="js-takeshot-btn">Take Screenshot</button>
+            <button id="js-takeshot-btn">產生圖檔</button>
         </section>
     </main>
 
