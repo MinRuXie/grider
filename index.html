@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4x4 快快做</title>
 
+    <!-- google info -->
+    <meta name="description" content="4x4 快快做">
+    <meta name="author" content="Copyright&copy;Since 2021, JoyXie.">
+    
+    <!-- facebook og -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="4x4 快快做"/>
+    <meta property="og:site_name" content="4x4 快快做"/>
+    <meta property="og:description" content="4x4 快快做"/>
+    <meta property="og:url" content="https://minruxie.github.io/grider/"/>
+
+    <!-- icon -->
+    <link rel="icon" href="images/grid.svg" type="image/x-icon">
+
     <!-- font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Vast+Shadow&display=swap" rel="stylesheet">
@@ -24,11 +38,30 @@
         <section class="toolbox-wrap">
             <h4>年份樣式</h4>
             
-            <label for="year-color">顏色</label>
-            <input id="js-year-color" name="year-color" type="color">
+            <div class="form-group">
+                <label for="year-color">顏色</label>
+                <input id="js-year-color" name="year-color" type="color">
+            </div>
 
-            <label for="year-font-size">字體大小</label>
-            <input id="js-year-font-size" name="year-font-size" min="12" max="100" type="number">px
+            <div class="form-group">
+                <label for="year-font-size">字體大小</label>
+                <input id="js-year-font-size" name="year-font-size" min="12" max="100" type="number">px
+            </div>
+
+            <div class="form-group">
+                <label for="year-font-weight">字重</label>
+                <input id="js-year-font-weight" name="year-font-weight" type="text">
+            </div>
+
+            <div class="form-group">
+                <label for="year-font-family-link">Google 字型 link</label>
+                <textarea id="js-year-font-family-link" name="year-font-family-link" cols="40" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="year-font-family-name">Google 字型 css 名稱</label>
+                <input id="js-year-font-family-name" name="year-font-family-name" type="text">
+            </div>
 
             <h4>輸出</h4>
             <button id="js-takeshot-btn">產生圖檔</button>

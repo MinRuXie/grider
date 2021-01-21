@@ -1,7 +1,18 @@
 # 4x4產生器
+4 乘 4 共 16 張圖的圖片產生器。
 
 ## 功能
-上傳16張圖片，可以產出一張圖片。
+
+### 圖片
+* 上傳：強制拉開比例為正方形。
+* 輸出：`1024px`*`1024px` 圖檔
+
+### 年份文字
+* 顏色
+* 字體大小
+* 字重
+* google 字型
+
 
 ## plugin
 * [html2canvas](https://www.geeksforgeeks.org/how-to-take-screenshot-of-a-div-using-javascript/)

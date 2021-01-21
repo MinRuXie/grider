@@ -4,11 +4,13 @@ $(function(){
 
     let $year_wrap = $('#js-year-wrap');
     let $grid_wrap = $('#js-grid-wrap');
-    // let $content_wrap = $('#js-content-wrap');
     let $output_warp = $('.output-wrap');
 
     let $year_font_size = $('#js-year-font-size');
     let $year_color = $('#js-year-color');
+    let $year_weight = $('#js-year-font-weight');
+    let $year_font_family_link = $('#js-year-font-family-link');
+    let $year_font_family_name = $('#js-year-font-family-name');
 
     let today = new Date();
     let current_year = today.getFullYear();
@@ -61,15 +63,6 @@ $(function(){
         await bindImageEvent();
     }
 
-    function getScreenshot() {
-        let $output = $('#output');
-        $output.empty();
-
-        html2canvas(document.querySelector("#capture")).then(canvas => {
-            $output.append(canvas);
-        });
-    }
-
     function initFormDefaultValue() {
         /* font size */
         $year_wrap.text(current_year);
@@ -79,6 +72,27 @@ $(function(){
         let year_rgb = getRGB($year_wrap.css('color'));
         let year_hex = rgbToHex(year_rgb.red, year_rgb.green, year_rgb.blue);
         $year_color.val(year_hex);
+
+        /* font weight */
+        $year_weight.val($year_wrap.css('font-weight'));
+
+        /* font family */
+        let font_url = document.querySelector('link[href*="fonts.googleapis"]').href;
+        $year_font_family_link.val(font_url);
+        $year_font_family_name.val($year_wrap.css('font-family'));
+    }
+
+    function getScreenshot() {
+        $(document).scrollTop(0);
+        
+        let $output = $('#output');
+        $output.empty();
+
+        html2canvas(document.querySelector("#capture")
+        ).then(canvas => {
+            $output.append(canvas);
+            $screenshot_wrap.removeClass('capturing');
+        });
     }
 
     function changeYearSize() {
@@ -92,7 +106,24 @@ $(function(){
             'color': $year_color.val()
         });
     }
+
+    function changeYearWeight() {
+        $year_wrap.css({
+            'font-weight': $year_weight.val()
+        });
+    }
+
+    function changeFontLink() {
+        document.querySelector('link[href*="fonts.googleapis"]').href = $year_font_family_link.val();
+    }
+
+    function changeYearFont() {
+        $year_wrap.css({
+            'font-family': $year_font_family_name.val()
+        });
+    }
     
+
     $takeshot_btn.on('click', function(){
         getScreenshot();
         $output_warp.addClass('show');
@@ -112,13 +143,22 @@ $(function(){
         changeYearColor();
     });
 
+    $year_weight.on('change', function(){
+        changeYearWeight();
+    });
+
+    $year_font_family_link.on('change', function(){
+        changeFontLink();
+    });
+
+    $year_font_family_name.on('change', function(){
+        changeYearFont();
+    });
+
 
     /* init */
-    buildView();
+    buildView(); // promise
     initFormDefaultValue();
-    
-
-
 
     //---------------------------------------------
     // 將 rgb(red, green ,blue) 字串 轉換為 JSON物件
@@ -149,5 +189,4 @@ $(function(){
     function rgbToHex(r, g, b) {
         return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
     }
-    
 });
