@@ -1,20 +1,7 @@
 $(function(){
-    let $takeshot_btn = $('#js-takeshot-btn');
     let $colsed_modal_btn = $('#js-colsed-btn');
-
-    let $year_wrap = $('#js-year-wrap');
     let $grid_wrap = $('#js-grid-wrap');
     let $output_warp = $('.output-wrap');
-
-    let $year_font_size = $('#js-year-font-size');
-    let $year_color = $('#js-year-color');
-    let $year_weight = $('#js-year-font-weight');
-    let $year_font_family_link = $('#js-year-font-family-link');
-    let $year_font_family_name = $('#js-year-font-family-name');
-
-    let today = new Date();
-    let current_year = today.getFullYear();
-
     let count_x = 4;
     let count_y = 4;
 
@@ -32,11 +19,6 @@ $(function(){
             'grid-template-columns': `repeat(${count_x}, 1fr)`,
             'grid-template-rows': `repeat(${count_y}, 1fr)`
         });
-
-        // $content_wrap.css({
-        //     'grid-template-columns': `repeat(${count_x}, 1fr)`,
-        //     'grid-template-rows': `repeat(${count_y}, 1fr)`
-        // });
     }
 
     function bindImageEvent() {
@@ -63,102 +45,84 @@ $(function(){
         await bindImageEvent();
     }
 
-    function initFormDefaultValue() {
-        /* font size */
-        $year_wrap.text(current_year);
-        $year_font_size.val(parseInt($year_wrap.css('font-size')));
-
-        /* font color */
-        let year_rgb = getRGB($year_wrap.css('color'));
-        let year_hex = rgbToHex(year_rgb.red, year_rgb.green, year_rgb.blue);
-        $year_color.val(year_hex);
-
-        /* font weight */
-        $year_weight.val($year_wrap.css('font-weight'));
-
-        /* font family */
-        let font_url = document.querySelector('link[href*="fonts.googleapis"]').href;
-        $year_font_family_link.val(font_url);
-        $year_font_family_name.val($year_wrap.css('font-family'));
-    }
-
-    function getScreenshot() {
-        $(document).scrollTop(0);
-        
-        let $output = $('#output');
-        $output.empty();
-
-        html2canvas(document.querySelector("#capture")
-        ).then(canvas => {
-            $output.append(canvas);
-            $screenshot_wrap.removeClass('capturing');
-        });
-    }
-
-    function changeYearSize() {
-        $year_wrap.css({
-            'font-size': $year_font_size.val() + 'px'
-        });
-    }
-
-    function changeYearColor() {
-        $year_wrap.css({
-            'color': $year_color.val()
-        });
-    }
-
-    function changeYearWeight() {
-        $year_wrap.css({
-            'font-weight': $year_weight.val()
-        });
-    }
-
-    function changeFontLink() {
-        document.querySelector('link[href*="fonts.googleapis"]').href = $year_font_family_link.val();
-    }
-
-    function changeYearFont() {
-        $year_wrap.css({
-            'font-family': $year_font_family_name.val()
-        });
-    }
-    
-
-    $takeshot_btn.on('click', function(){
-        getScreenshot();
-        $output_warp.addClass('show');
-    });
-
     $colsed_modal_btn.on('click', function(){
         $output_warp.removeClass('show');
-    });
-
-    $year_font_size.on('change', function(){
-        changeYearSize();      
-    }).on('keydown', function(){
-        changeYearSize();      
-    });
-
-    $year_color.on('change', function(){
-        changeYearColor();
-    });
-
-    $year_weight.on('change', function(){
-        changeYearWeight();
-    });
-
-    $year_font_family_link.on('change', function(){
-        changeFontLink();
-    });
-
-    $year_font_family_name.on('change', function(){
-        changeYearFont();
     });
 
 
     /* init */
     buildView(); // promise
-    initFormDefaultValue();
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            year_text: '',
+            year_display: null,
+            year_color: '',
+            year_font_size: 0,
+            year_font_weight: '',
+            year_font_family_link: '',
+            year_font_family_name: ''
+        },
+        created: function () {
+            let today = new Date();
+            this.year_text = today.getFullYear();
+
+            this.year_display = $('#js-year-wrap').css('disply') == 'none' ? false : true;
+            
+            let year_rgb = getRGB($('#js-year-wrap').css('color'));
+            let year_hex = rgbToHex(year_rgb.red, year_rgb.green, year_rgb.blue);
+            this.year_color = year_hex;
+
+            this.year_font_size = parseInt($('#js-year-wrap').css('font-size'));
+            this.year_font_weight = $('#js-year-wrap').css('font-weight');
+            this.year_font_family_link = document.querySelector('link[href*="fonts.googleapis"]').href;
+            this.year_font_family_name = $('#js-year-wrap').css('font-family');
+        },
+        methods: {
+            changeYearDisplay: function () {
+                let flag = this.year_display ? 'block' : 'none';
+                $('#js-year-wrap').css({
+                    'display': flag
+                });
+            },
+            changeYearColor: function () {
+                $('#js-year-wrap').css({
+                    'color': this.year_color
+                });
+            },
+            changeYearSize: function () {
+                $('#js-year-wrap').css({
+                    'font-size': this.year_font_size + 'px'
+                });
+            },
+            changeYearWeight: function () {
+                $('#js-year-wrap').css({
+                    'font-weight': this.year_font_weight
+                });
+            },
+            changeFontLink: function () {
+                console.log(document.querySelector('link[href*="fonts.googleapis"]'));
+                document.querySelector('link[href*="fonts.googleapis"]').href = this.year_font_family_link;
+            },
+            changeYearFont: function () {
+                $('#js-year-wrap').css({
+                    'font-family': this.year_font_family_name
+                });
+            },
+            getScreenshot: function () {
+                $(document).scrollTop(0);
+                
+                let $output = $('#output');
+                $output.empty();
+        
+                html2canvas(document.querySelector("#capture")).then(canvas => {
+                    $output.append(canvas);
+                    $('.output-wrap').addClass('show');
+                });
+            }
+        }
+    })
 
     //---------------------------------------------
     // 將 rgb(red, green ,blue) 字串 轉換為 JSON物件

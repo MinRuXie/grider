@@ -27,44 +27,67 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <main>
+    <main id="app">
         <section class="work-wrap">
             <div id="capture" class="capture-wrap">
-                <div id="js-year-wrap" class="year-wrap"></div>
+                <div id="js-year-wrap" class="year-wrap">{{ year_text }}</div>
                 <div id="js-grid-wrap" class="grid-wrap"></div>
             </div> 
         </section>
 
         <section class="toolbox-wrap">
             <h4>年份樣式</h4>
-            
+
+            <div class="form-group">
+                <label for="year-show">顯示年份</label>
+                <input type="checkbox" id="js-year-show" name="year-show" 
+                    v-model:checked="year_display" 
+                    v-on:change="changeYearDisplay">
+            </div>
+    
             <div class="form-group">
                 <label for="year-color">顏色</label>
-                <input id="js-year-color" name="year-color" type="color">
+                <input id="js-year-color" name="year-color" type="color" 
+                    v-model="year_color" 
+                    v-on:change="changeYearColor"
+                    v-on:keyup="changeYearColor">
             </div>
 
             <div class="form-group">
                 <label for="year-font-size">字體大小</label>
-                <input id="js-year-font-size" name="year-font-size" min="12" max="100" type="number">px
+                <input name="year-font-size" min="12" max="100" type="number" 
+                    v-model="year_font_size" 
+                    v-on:change="changeYearSize"
+                    v-on:keyup="changeYearSize">px
             </div>
 
             <div class="form-group">
                 <label for="year-font-weight">字重</label>
-                <input id="js-year-font-weight" name="year-font-weight" type="text">
+                <input id="js-year-font-weight" name="year-font-weight" type="text" 
+                    v-model="year_font_weight" 
+                    v-on:change="changeYearWeight"
+                    v-on:keyup="changeYearWeight">
             </div>
 
             <div class="form-group">
                 <label for="year-font-family-link">Google 字型 link</label>
-                <textarea id="js-year-font-family-link" name="year-font-family-link" cols="40" rows="3"></textarea>
+                <textarea id="js-year-font-family-link" name="year-font-family-link" cols="40" rows="3" 
+                    v-model="year_font_family_link" 
+                    @keydown.enter.exact.prevent 
+                    @keyup.enter.exact="changeFontLink"
+                    v-on:keyup="changeFontLink"></textarea>
             </div>
 
             <div class="form-group">
                 <label for="year-font-family-name">Google 字型 css 名稱</label>
-                <input id="js-year-font-family-name" name="year-font-family-name" type="text">
+                <input id="js-year-font-family-name" name="year-font-family-name" type="text" 
+                    v-model="year_font_family_name" 
+                    v-on:change="changeYearFont"
+                    v-on:keyup="changeYearFont">
             </div>
 
             <h4>輸出</h4>
-            <button id="js-takeshot-btn">產生圖檔</button>
+            <button id="js-takeshot-btn" v-on:click="getScreenshot">產生圖檔</button>
         </section>
     </main>
 
@@ -76,6 +99,7 @@
     <!-- plugins -->
     <script src="js/plugins/jquery-3.3.1.min.js"></script>
     <script src="js/plugins/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
 
     <!-- custom -->
     <script src="js/main.js"></script>

@@ -13,6 +13,12 @@
 * 字重
 * google 字型
 
+## 開發工具
+* HTML
+* SCSS
+* Javascript
+* jQuery
+* Vue.js
 
 ## plugin
 * [html2canvas](https://www.geeksforgeeks.org/how-to-take-screenshot-of-a-div-using-javascript/)
