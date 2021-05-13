@@ -15,6 +15,22 @@ html, body {
   margin: 0;
 }
 
+input:not(input[type=file]), textarea, select {
+  box-sizing: content-box;
+  padding: 3px 4px 2px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  margin-right: 5px;
+}
+input:not(input[type=file]):focus, textarea:focus, select:focus {
+  outline: none;
+}
+
+h3 {
+  margin: 0 0 20px;
+  text-align: center;
+}
+
 main .work-wrap {
   width: 1024px;
   height: 1024px;

@@ -86,6 +86,9 @@ $(function(){
                     'display': flag
                 });
             },
+            changeYearText: function () {
+                $('#js-year-wrap').val(this.year_text);
+            },
             changeYearColor: function () {
                 $('#js-year-wrap').css({
                     'color': this.year_color

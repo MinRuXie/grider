@@ -36,17 +36,22 @@
         </section>
 
         <section class="toolbox-wrap">
-            <h4>年份樣式</h4>
+            <h3>年份樣式</h3>
 
             <div class="form-group">
-                <label for="year-show">顯示年份</label>
-                <input type="checkbox" id="js-year-show" name="year-show" 
-                    v-model:checked="year_display" 
-                    v-on:change="changeYearDisplay">
+                <label for="js-year-show">顯示文字
+                    <input type="checkbox" id="js-year-show" name="year-show" 
+                        v-model:checked="year_display" 
+                        v-on:change="changeYearDisplay">
+                </label>
+                <input id="js-year-text" name="year-text" type="text" 
+                    v-model="year_text" 
+                    v-on:change="changeYearText"
+                    v-on:keyup="changeYearText">
             </div>
     
             <div class="form-group">
-                <label for="year-color">顏色</label>
+                <label for="js-year-color">顏色</label>
                 <input id="js-year-color" name="year-color" type="color" 
                     v-model="year_color" 
                     v-on:change="changeYearColor"
@@ -62,15 +67,26 @@
             </div>
 
             <div class="form-group">
-                <label for="year-font-weight">字重</label>
-                <input id="js-year-font-weight" name="year-font-weight" type="text" 
-                    v-model="year_font_weight" 
-                    v-on:change="changeYearWeight"
-                    v-on:keyup="changeYearWeight">
+                <label for="js-year-font-weight">字重</label>
+                <select name="year-font-weight" id="js-year-font-weight" v-model="year_font_weight" v-on:change="changeYearWeight">
+                    <option value="normal">normal</option>
+                    <option value="bold">bold</option>
+                    <option value="bolder">bolder</option>
+                    <option value="lighter">lighter</option>
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                    <option value="300">300</option>
+                    <option value="400">400</option>
+                    <option value="500">500</option>
+                    <option value="600">600</option>
+                    <option value="700">700</option>
+                    <option value="800">800</option>
+                    <option value="900">900</option>
+                </select>
             </div>
 
             <div class="form-group">
-                <label for="year-font-family-link">Google 字型 link</label>
+                <label for="js-year-font-family-link">Google 字型 link</label>
                 <textarea id="js-year-font-family-link" name="year-font-family-link" cols="40" rows="3" 
                     v-model="year_font_family_link" 
                     @keydown.enter.exact.prevent 
@@ -79,7 +95,7 @@
             </div>
 
             <div class="form-group">
-                <label for="year-font-family-name">Google 字型 css 名稱</label>
+                <label for="js-year-font-family-name">Google 字型 CSS 名稱</label>
                 <input id="js-year-font-family-name" name="year-font-family-name" type="text" 
                     v-model="year_font_family_name" 
                     v-on:change="changeYearFont"
